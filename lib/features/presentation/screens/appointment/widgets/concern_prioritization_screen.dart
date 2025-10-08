@@ -163,7 +163,7 @@ class _ConcernPrioritizationScreenState extends State<ConcernPrioritizationScree
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: NeumorphicOptionCard(
-                      text: 'Others',
+                      text: 'Other',
                       isSelected: isOtherSelected,
                       onTap: _toggleOther,
                     ),

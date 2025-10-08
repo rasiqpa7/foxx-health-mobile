@@ -56,12 +56,15 @@ class _AgeSelectionRevampScreenState extends State<AgeSelectionRevampScreen> {
             children: [
               Text(
                 'Your age matters',
-                style: AppHeadingTextStyles.h4.copyWith(color: Colors.black),
+                style: AppTypography.h4,
               ),
               const SizedBox(height: 8),
               Text(
                 'Age can impact how symptoms show up and change over time—knowing yours helps us get it right.',
-                style: AppOSTextStyles.osMd.copyWith(color: AppColors.primaryTxt),
+                style: AppTypography.bodyMd.copyWith(
+                  color: AppColors.textPrimary,
+                  fontWeight: AppTypography.regular,
+                ),
               ),
               const SizedBox(height: 24),
               Container(
@@ -83,11 +86,13 @@ class _AgeSelectionRevampScreenState extends State<AgeSelectionRevampScreen> {
                         ],
                         decoration: InputDecoration(
                           hintText: '16',
-                          hintStyle:AppOSTextStyles.osSmSingleLine.copyWith(color: Colors.grey) ,
+                          hintStyle: AppTypography.bodySm.copyWith(
+                            color: AppColors.inputTextPlaceholder,
+                          ),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
                         ),
-                        style: AppTextStyles.bodyOpenSans.copyWith(fontSize: 18),
+                        style: AppTypography.bodyLg,
                         onChanged: (value) {
                           setState(() {});
                         },
@@ -95,7 +100,9 @@ class _AgeSelectionRevampScreenState extends State<AgeSelectionRevampScreen> {
                     ),
                     Text(
                       'Years',
-                      style: AppTextStyles.bodyOpenSans.copyWith(color: Colors.grey[600]),
+                      style: AppTypography.bodyMd.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                   ],
                 ),

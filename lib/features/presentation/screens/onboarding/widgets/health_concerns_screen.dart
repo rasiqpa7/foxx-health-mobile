@@ -105,8 +105,8 @@ class _HealthConcernsScreenState extends State<HealthConcernsScreen> {
                   Expanded(
                     child: Text(
                       option,
-                      style: AppTextStyles.bodyOpenSans.copyWith(
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                      style: AppTypography.bodyMd.copyWith(
+                        fontWeight: isSelected ? AppTypography.semibold : AppTypography.regular,
                       ),
                     ),
                   ),
@@ -288,4 +288,4 @@ class _HealthConcernsScreenState extends State<HealthConcernsScreen> {
       ),
     );
   }
-} 
+}

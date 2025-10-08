@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
 import 'package:foxxhealth/features/presentation/theme/app_text_styles.dart';
 import 'package:foxxhealth/features/presentation/widgets/navigation_buttons.dart';
+import 'package:foxxhealth/features/presentation/widgets/foxx_background.dart';
 import 'package:foxxhealth/features/presentation/cubits/onboarding/onboarding_cubit.dart';
 
 class AddMedicationsScreen extends StatefulWidget {
@@ -85,12 +86,14 @@ class _AddMedicationsScreenState extends State<AddMedicationsScreen> {
           ],
         ),
       ),
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Foxxbackground(
+      child: Scaffold(
       backgroundColor: Colors.transparent,
       body: SafeArea(
         child: Padding(
@@ -99,14 +102,15 @@ class _AddMedicationsScreenState extends State<AddMedicationsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Add your medications or supplements',
-                style: AppHeadingTextStyles.h4,
+                'Added Medications',
+                style: AppTypography.bodyMd,
               ),
               const SizedBox(height: 8),
               Text(
-                'If you\'re not sure, still figuring it out, or would rather answer later, that\'s totally okay. You can update this anytime in your Health Profile.',
-                style: AppOSTextStyles.osMd
-                    .copyWith(color: AppColors.primary01),
+                'No medications added yet',
+                style: AppTypography.bodyMd.copyWith(
+                  color: AppColors.textSecondary,
+                ),
               ),
               const SizedBox(height: 24),
               Expanded(
@@ -172,4 +176,4 @@ class _AddMedicationsScreenState extends State<AddMedicationsScreen> {
       ),
     );
   }
-} 
+}

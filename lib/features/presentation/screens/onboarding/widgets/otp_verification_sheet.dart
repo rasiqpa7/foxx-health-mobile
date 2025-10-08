@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foxxhealth/features/presentation/cubits/login/login_cubit.dart';
 import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
+import 'package:foxxhealth/features/presentation/theme/app_text_styles.dart';
 import 'package:foxxhealth/core/utils/snackbar_utils.dart';
 
 class OTPVerificationSheet extends StatefulWidget {
@@ -120,21 +121,17 @@ class _OTPVerificationSheetState extends State<OTPVerificationSheet> {
             // Title
             const Text(
               'Verify Your Email',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: AppColors.primaryTxt,
-              ),
-              textAlign: TextAlign.center,
+              style: AppTypography.h3.copyWith(color: AppColors.textPrimary),
+              textAlign: TextAlign.center
             ),
             const SizedBox(height: 8),
             
             // Subtitle
             Text(
               'We\'ve sent a verification code to\n${widget.email}',
-              style: const TextStyle(
-                fontSize: 16,
-                color: AppColors.secondaryTxt,
+              style: AppTypography.bodyMd.copyWith(
+                color: AppColors.textSecondary,
+                fontWeight: AppTypography.regular,
               ),
               textAlign: TextAlign.center,
             ),
@@ -146,33 +143,27 @@ class _OTPVerificationSheetState extends State<OTPVerificationSheet> {
               focusNode: _otpFocusNode,
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 8,
-              ),
+              style: AppTypography.h3.copyWith(letterSpacing: 8),
               decoration: InputDecoration(
                 hintText: '000000',
-                hintStyle: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                hintStyle: AppTypography.h3.copyWith(
                   letterSpacing: 8,
-                  color: Colors.grey[400],
+                  color: AppColors.inputTextPlaceholder,
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: Colors.grey[300]!),
+                  borderSide: BorderSide(color: AppColors.gray300),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: Colors.grey[300]!),
+                  borderSide: BorderSide(color: AppColors.gray300),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: AppColors.primaryTint),
+                focusedBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  borderSide: BorderSide(color: AppColors.primaryTint),
                 ),
                 filled: true,
-                fillColor: Colors.grey[50],
+                fillColor: AppColors.gray200,
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 16,
@@ -207,10 +198,7 @@ class _OTPVerificationSheetState extends State<OTPVerificationSheet> {
                       )
                     : const Text(
                         'Verify OTP',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: AppTypography.bodyMd,
                       ),
               ),
             ),
@@ -228,10 +216,7 @@ class _OTPVerificationSheetState extends State<OTPVerificationSheet> {
               },
               child: const Text(
                 'Didn\'t receive the code? Resend',
-                style: TextStyle(
-                  color: AppColors.primaryTint,
-                  fontSize: 14,
-                ),
+                style: AppTypography.bodySm.copyWith(color: AppColors.textBrand),
               ),
             ),
             const SizedBox(height: 16),

@@ -107,8 +107,8 @@ class _DiagnosisHistoryScreenState extends State<DiagnosisHistoryScreen> {
                   Expanded(
                     child: Text(
                       option,
-                      style: AppTextStyles.bodyOpenSans.copyWith(
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                      style: AppTypography.bodyMd.copyWith(
+                        fontWeight: isSelected ? AppTypography.semibold : AppTypography.regular,
                       ),
                     ),
                   ),
@@ -290,4 +290,4 @@ class _DiagnosisHistoryScreenState extends State<DiagnosisHistoryScreen> {
       ),
     );
   }
-} 
+}

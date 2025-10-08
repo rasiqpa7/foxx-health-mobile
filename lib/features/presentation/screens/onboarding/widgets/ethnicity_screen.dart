@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:foxxhealth/features/presentation/widgets/navigation_buttons.dart';
 import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
 import 'package:foxxhealth/features/presentation/theme/app_text_styles.dart';
+import 'package:foxxhealth/features/presentation/theme/app_typography.dart';
 import 'package:foxxhealth/features/presentation/screens/background/foxxbackground.dart';
 import 'package:foxxhealth/features/presentation/cubits/onboarding/onboarding_cubit.dart';
 
@@ -103,8 +104,8 @@ class _EthnicityScreenState extends State<EthnicityScreen> {
               Expanded(
                 child: Text(
                   option,
-                  style: AppTextStyles.bodyOpenSans.copyWith(
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                  style: AppTypography.bodyMd.copyWith(
+                    fontWeight: isSelected ? AppTypography.semibold : AppTypography.regular,
                   ),
                 ),
               ),
@@ -131,12 +132,15 @@ class _EthnicityScreenState extends State<EthnicityScreen> {
               children: [
                 Text(
                   _description.split('?')[0] + '?',
-                  style: AppHeadingTextStyles.h4,
+                  style: AppTypography.h4,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   _description.split('?').length > 1 ? _description.split('?')[1] : '',
-                  style: AppOSTextStyles.osMd.copyWith(color: Colors.grey[600]),
+                  style: AppTypography.bodyMd.copyWith(
+                    color: AppColors.textSecondary,
+                    fontWeight: AppTypography.regular,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Expanded(

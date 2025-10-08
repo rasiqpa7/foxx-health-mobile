@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:foxxhealth/features/presentation/widgets/navigation_buttons.dart';
-
+import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
 import 'package:foxxhealth/features/presentation/theme/app_text_styles.dart';
 import 'package:foxxhealth/features/presentation/screens/background/foxxbackground.dart';
 
@@ -73,12 +72,15 @@ class _HeightInputScreenState extends State<HeightInputScreen> {
               children: [
                 Text(
                   'How tall are you?',
-                  style: AppHeadingTextStyles.h4,
+                  style: AppTypography.h4,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Your height helps us interpret symptom trends and offer more accurate support for your body.',
-                  style: AppOSTextStyles.osMd.copyWith(color: Colors.grey[600]),
+                  style: AppTypography.bodyMd.copyWith(
+                    color: AppColors.textPrimary,
+                    fontWeight: AppTypography.regular,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Row(
@@ -106,7 +108,7 @@ class _HeightInputScreenState extends State<HeightInputScreen> {
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.zero,
                                 ),
-                                style: AppTextStyles.bodyOpenSans.copyWith(fontSize: 18),
+                                style: AppTypography.bodyLg,
                                 onChanged: (_) => setState(() {}),
                                 onSubmitted: (_) {
                                   FocusScope.of(context).requestFocus(_inchesFocusNode);
@@ -115,7 +117,9 @@ class _HeightInputScreenState extends State<HeightInputScreen> {
                             ),
                             Text(
                               'ft',
-                              style: AppTextStyles.bodyOpenSans.copyWith(color: Colors.grey[600]),
+                              style: AppTypography.bodyMd.copyWith(
+                                color: AppColors.textSecondary,
+                              ),
                             ),
                           ],
                         ),
@@ -145,13 +149,15 @@ class _HeightInputScreenState extends State<HeightInputScreen> {
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.zero,
                                 ),
-                                style: AppTextStyles.bodyOpenSans.copyWith(fontSize: 18),
+                                style: AppTypography.bodyLg,
                                 onChanged: (_) => setState(() {}),
                               ),
                             ),
                             Text(
                               'in',
-                              style: AppTextStyles.bodyOpenSans.copyWith(color: Colors.grey[600]),
+                              style: AppTypography.bodyMd.copyWith(
+                                color: AppColors.textSecondary,
+                              ),
                             ),
                           ],
                         ),

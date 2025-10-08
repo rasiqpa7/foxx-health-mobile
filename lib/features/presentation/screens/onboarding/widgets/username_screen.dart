@@ -94,12 +94,15 @@ class _UsernameScreenState extends State<UsernameScreen> {
               children: [
                 Text(
                   'Let\'s personalize your experience.',
-                  style: AppHeadingTextStyles.h2,
+                  style: AppTypography.h2,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'We\'ll get to know you and provide better visit preps.',
-                  style: AppOSTextStyles.osLg.copyWith(color: AppColors.primaryTxt),
+                  style: AppTypography.bodyLg.copyWith(
+                    color: AppColors.textPrimary,
+                    fontWeight: AppTypography.regular,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Container(
@@ -123,7 +126,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.zero,
                           ),
-                          style: AppTextStyles.bodyOpenSans,
+                          style: AppTypography.bodyMd,
                           onChanged: (value) {
                             // Real-time validation
                             _validateUsername(value);
@@ -145,9 +148,8 @@ class _UsernameScreenState extends State<UsernameScreen> {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       _errorMessage,
-                      style: AppTextStyles.bodyOpenSans.copyWith(
-                        color: Colors.red,
-                        fontSize: 14,
+                      style: AppTypography.bodySm.copyWith(
+                        color: AppColors.textError,
                       ),
                     ),
                   ),
@@ -160,7 +162,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
                   ),
                   child: Text(
                     'This username will be used as your unique ID to connect with other FoXX members',
-                    style: AppOSTextStyles.osSmSemiboldLabel.copyWith(color: Colors.grey[600]),
+                    style: AppTypography.bodySm.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ),
                 const Spacer(),

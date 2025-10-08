@@ -97,9 +97,9 @@ class _LocationScreenState extends State<LocationScreen> {
                             icon: Icon(CupertinoIcons.xmark)),
                         Text(
                           'Location',
-                          style: AppTextStyles.bodyOpenSans.copyWith(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
+                          style: AppTypography.bodyLg.copyWith(
+                            fontWeight: AppTypography.semibold,
+                            color: AppColors.textPrimary,
                           ),
                         ),
                         SizedBox(width: 50)
@@ -174,7 +174,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         ),
                         child: Text(
                           state,
-                          style: AppTextStyles.bodyOpenSans,
+                          style: AppTypography.bodyMd,
                         ),
                       ),
                     );
