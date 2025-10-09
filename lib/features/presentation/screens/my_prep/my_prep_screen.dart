@@ -61,15 +61,6 @@ class _MyPrepScreenState extends State<MyPrepScreen> {
     return Foxxbackground(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: FoxxBackButton(),
-          title: Text(
-            'My Prep',
-            style: AppOSTextStyles.osMdBold.copyWith(color: AppColors.primary01),
-          ),
-        ),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

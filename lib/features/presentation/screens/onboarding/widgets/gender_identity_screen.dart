@@ -124,7 +124,7 @@ class _GenderIdentityScreenState extends State<GenderIdentityScreen> {
               Text(
                 _description.split('?').length > 1 ? _description.split('?')[1] : '',
                 style: AppOSTextStyles.osMd
-                    .copyWith(color:AppColors.primaryTxt),
+                    .copyWith(color:AppColors.textPrimary),
               ),
               const SizedBox(height: 24),
               Expanded(

@@ -99,7 +99,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
                 const SizedBox(height: 8),
                 Text(
                   'We\'ll get to know you and provide better visit preps.',
-                  style: AppOSTextStyles.osLg.copyWith(color: AppColors.primaryTxt),
+                  style: AppOSTextStyles.osLg.copyWith(color: AppColors.textPrimary),
                 ),
                 const SizedBox(height: 24),
                 Container(

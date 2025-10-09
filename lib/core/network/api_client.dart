@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foxxhealth/core/network/api_logger_interceptor.dart';
 import 'package:foxxhealth/core/utils/app_storage.dart';
 import 'package:foxxhealth/features/presentation/screens/loginScreen/login_screen.dart';
+import 'package:foxxhealth/features/presentation/screens/splash/splash_screen.dart';
 import 'package:get/get.dart' as getx;
 import 'package:get_storage/get_storage.dart';
 import 'package:logger/logger.dart';
@@ -183,10 +184,7 @@ class LoggerInterceptor extends Interceptor {
         await AppStorage.clearCredentials();
         Navigator.of(getx.Get.context!).pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (context) => LoginScreen(
-                showBackButton: false,
-                isSign: true,
-              ),
+              builder: (context) => const SplashScreen(),
             ),
             (route) => false);
       } else {

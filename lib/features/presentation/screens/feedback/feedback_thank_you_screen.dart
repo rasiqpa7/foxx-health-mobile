@@ -42,7 +42,7 @@ class FeedbackThankYouScreen extends StatelessWidget {
                   Text(
                     'Thanks for taking the time to tell us your thoughts, it means a lot to us.',
                     style: AppTextStyles.bodyOpenSans.copyWith(
-                      color: AppColors.secondaryTxt,
+                      color: AppColors.textSecondary,
                       height: 1.5,
                     ),
                     textAlign: TextAlign.center,

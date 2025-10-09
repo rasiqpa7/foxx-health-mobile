@@ -1,3 +1,4 @@
+// Updated by Joy — homescreen update - not final
 import 'package:flutter/material.dart';
 import 'package:foxxhealth/features/presentation/screens/background/foxxbackground.dart';
 import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
@@ -1897,7 +1898,7 @@ class _AppointmentCompanionScreenState extends State<AppointmentCompanionScreen>
             Text(
               'More like this',
               style: AppOSTextStyles.osMd.copyWith(
-                color: AppColors.tertiaryBtnTxt,
+                color: AppColors.buttonTextOutline,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -1943,7 +1944,7 @@ class _AppointmentCompanionScreenState extends State<AppointmentCompanionScreen>
                     border: InputBorder.none,
                     hintStyle: AppOSTextStyles.osMd.copyWith(color: AppColors.gray400),
                   ),
-                  style: AppOSTextStyles.osMd.copyWith(color: AppColors.tertiaryBtnTxt),
+                  style: AppOSTextStyles.osMd.copyWith(color: AppColors.buttonTextOutline),
                   onSubmitted: (question) {
                     if (question.trim().isNotEmpty) {
                       _addCustomQuestion(sectionKey, question.trim());

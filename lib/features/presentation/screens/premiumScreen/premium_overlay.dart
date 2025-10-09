@@ -139,7 +139,7 @@ class _PremiumOverlayState extends State<PremiumOverlay> {
       return product.currencySymbol + product.rawPrice.toString();
     } catch (e) {
       // Fallback prices if products are not loaded
-      return productId == yearlyProductId ? '\$20' : '\$2';
+      return productId == yearlyProductId ? '\$22' : '\$2';
     }
   }
 

@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
+import 'package:foxxhealth/features/presentation/screens/splash/splash_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -78,13 +79,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         );
         
-        // Navigate to login screen and clear all previous routes
+        // Navigate to splash screen and clear all previous routes
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => LoginScreen(
-              showBackButton: false,
-              isSign: true,
-            ),
+            builder: (context) => const SplashScreen(),
           ),
           (route) => false,
         );
@@ -684,14 +682,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
         }
         
-        // Navigate to login screen and clear all previous routes
+        // Navigate to splash screen and clear all previous routes
         if (mounted) {
           Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (context) => LoginScreen(
-                showBackButton: false,
-                isSign: true,
-              ),
+              builder: (context) => const SplashScreen(),
             ),
             (route) => false,
           );

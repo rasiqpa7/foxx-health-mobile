@@ -1,23 +1,35 @@
 pluginManagement {
-    def flutterSdkPath = {
-        def properties = new Properties()
-        file("local.properties").withInputStream { properties.load(it) }
-        def flutterSdkPath = properties.getProperty("flutter.sdk")
-        assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
-        return flutterSdkPath
-    }()
-
-    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+    // Resolve Flutter SDK path from local.properties and include Flutter tools build
+    def flutterSdkPath = null
+    try {
+        Properties properties = new Properties()
+        File localProps = file("local.properties")
+        if (localProps.exists()) {
+            localProps.withInputStream { properties.load(it) }
+            flutterSdkPath = properties.getProperty("flutter.sdk")
+        }
+    } catch (ignored) {}
+    if (flutterSdkPath == null) {
+        throw new GradleException("flutter.sdk not set in local.properties")
+    }
+    includeBuild("${flutterSdkPath}/packages/flutter_tools/gradle")
 
     repositories {
         google()
         mavenCentral()
         gradlePluginPortal()
     }
+
+    plugins {
+        id "dev.flutter.flutter-plugin-loader" version "1.0.0"
+        id "com.android.application" version "8.10.1" apply false
+        id "org.jetbrains.kotlin.android" version "2.1.10" apply false
+        id "com.google.gms.google-services" version "4.3.15" apply false
+        id "com.google.firebase.crashlytics" version "2.9.9" apply false
+    }
 }
 
-
-
+// Apply the Flutter plugin loader at the settings level as per Flutter template
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
     id "com.android.application" version '8.10.1' apply false

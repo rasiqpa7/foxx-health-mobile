@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'dart:ui' as ui;
 import 'package:foxxhealth/features/presentation/screens/background/foxxbackground.dart';
 import 'package:foxxhealth/features/presentation/screens/profile/profile_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/health_profile/health_profile_questions_screen.dart';
@@ -163,6 +165,7 @@ class _HealthProfileScreenState extends State<HealthProfileScreen> {
             ],
           ),
         ),
+        bottomNavigationBar: _buildBottomNavigationBar(context),
       ),
     );
   }
@@ -449,6 +452,130 @@ class _HealthProfileScreenState extends State<HealthProfileScreen> {
             }
           }
         },
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar(BuildContext context) {
+    final List<String> _tabLabels = [
+      'Home',
+      'My Prep',
+      'Tracker',
+      'Insight',
+      'The Den',
+    ];
+    final List<Map<String, String>> _tabIconAssets = [
+      {
+        'inactive': 'assets/svg/main_nav_tabs/home_off.svg',
+        'active': 'assets/svg/main_nav_tabs/home_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/myprep_off.svg',
+        'active': 'assets/svg/main_nav_tabs/myprep_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/tracker_off.svg',
+        'active': 'assets/svg/main_nav_tabs/tracker_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/insight_off.svg',
+        'active': 'assets/svg/main_nav_tabs/insight_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/den_off.svg',
+        'active': 'assets/svg/main_nav_tabs/den_on.svg',
+      },
+    ];
+
+    return Container(
+      padding: const EdgeInsets.only(top: 12, bottom: 32, left: 16, right: 16),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.8),
+        borderRadius: BorderRadius.circular(25),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: List.generate(
+          _tabLabels.length,
+          (index) => _buildNavItem(
+            index,
+            _tabLabels[index],
+            false,
+            () {
+              if (index == 0) {
+                Navigator.of(context).pop();
+              }
+              // Other tabs could push respective screens if desired
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(
+    int index,
+    String label,
+    bool isActive,
+    VoidCallback onTap,
+  ) {
+    final List<Map<String, String>> _tabIconAssets = [
+      {
+        'inactive': 'assets/svg/main_nav_tabs/home_off.svg',
+        'active': 'assets/svg/main_nav_tabs/home_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/myprep_off.svg',
+        'active': 'assets/svg/main_nav_tabs/myprep_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/tracker_off.svg',
+        'active': 'assets/svg/main_nav_tabs/tracker_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/insight_off.svg',
+        'active': 'assets/svg/main_nav_tabs/insight_on.svg',
+      },
+      {
+        'inactive': 'assets/svg/main_nav_tabs/den_off.svg',
+        'active': 'assets/svg/main_nav_tabs/den_on.svg',
+      },
+    ];
+
+    final assetPath = isActive
+        ? _tabIconAssets[index]['active']!
+        : _tabIconAssets[index]['inactive']!;
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            assetPath,
+            width: 28,
+            height: 28,
+          ),
+          const SizedBox(height: 6),
+          Text(
+            label,
+            style: isActive
+                ? AppTypography.labelSmBold.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontVariations: [ui.FontVariation('wght', 700)],
+                  )
+                : AppTypography.labelSmSemibold.copyWith(
+                    color: AppColors.textSecondary,
+                    fontVariations: [ui.FontVariation('wght', 600)],
+                  ),
+          ),
+        ],
       ),
     );
   }

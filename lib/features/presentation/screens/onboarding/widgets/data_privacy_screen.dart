@@ -59,7 +59,7 @@ class _DataPrivacyScreenState extends State<DataPrivacyScreen> {
                 Text(
                   'What you share with us stays safe, always. We treat your health info with the same care we\'d want for ourselves: private, respectful, and only ever used to support you.',
                   style: AppOSTextStyles.osMd
-                      .copyWith(color: AppColors.primaryTxt),
+              .copyWith(color: AppColors.textPrimary),
                   textAlign: TextAlign.center,
                 ),
                 
@@ -89,4 +89,4 @@ class _DataPrivacyScreenState extends State<DataPrivacyScreen> {
       ),
     );
   }
-} 
+}

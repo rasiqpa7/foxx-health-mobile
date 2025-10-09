@@ -1,7 +1,241 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
+
+
+
+
+// ============================
+/// Design tokens for typography
+// ============================
+
+
+class AppTypography {
+  // ====== Font Families ======
+  static const String fontMw = 'Merriweather';
+  static const String fontOs = 'Open Sans';
+
+  // ====== Font Weights ======
+  static const FontWeight regular = FontWeight.w400;
+  static const FontWeight semibold = FontWeight.w600;
+  static const FontWeight bold = FontWeight.w700;
+
+  // ====== Sizes ======
+  static const double size2xs = 11;
+  static const double sizeXs = 12;
+  static const double sizeSm = 14;
+  static const double sizeMd = 16;
+  static const double sizeLg = 18;
+  static const double sizeXl = 20;
+  static const double size2xl = 24;
+  static const double size3xl = 28;
+  static const double size4xl = 32;
+
+  // ====== Line Heights ======
+  static const double lh2xs = 16;
+  static const double lhXs = 20;
+  static const double lhSm = 24;
+  static const double lhMd = 28;
+  static const double lhLg = 32;
+  static const double lhXl = 36;
+  static const double lh2xl = 40;
+
+  // ====== Letter Spacing ======
+  static const double lsXl = 0.25;
+  static const double lsLg = 0.1;
+  static const double lsBase = 0;
+  static const double lsSm = -0.1;
+
+  // ====== Default Text Color Token ======
+  static const Color textPrimary = AppColors.gray900;
+
+  // ==========================
+  // BODY TEXT (Hybrid)
+  // ==========================
+  static TextStyle bodyLg = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeLg,
+    height: AppTypography.lhMd / AppTypography.sizeLg,
+    letterSpacing: AppTypography.lsLg,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle bodyLgSemibold = bodyLg.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle bodyLgBold = bodyLg.copyWith(fontWeight: AppTypography.bold);
+
+  static TextStyle bodyMd = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeMd,
+    height: AppTypography.lhSm / AppTypography.sizeMd,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle bodyMdSemibold = bodyMd.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle bodyMdBold = bodyMd.copyWith(fontWeight: AppTypography.bold);
+  // Bullet body style: regular weight variant of bodyMd for list items
+  static TextStyle bulletBodyMd = bodyMd.copyWith(fontWeight: AppTypography.regular);
+
+  static TextStyle bodySm = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeSm,
+    height: AppTypography.lhXs / AppTypography.sizeSm,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle bodySmSemibold = bodySm.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle bodySmBold = bodySm.copyWith(fontWeight: AppTypography.bold);
+
+  static TextStyle bodyXs = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeXs,
+    height: AppTypography.lhXs / AppTypography.sizeXs,
+    letterSpacing: AppTypography.lsSm,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle bodyXsSemibold = bodyXs.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle bodyXsBold = bodyXs.copyWith(fontWeight: AppTypography.bold);
+
+  // ==========================
+  // HEADINGS (Hybrid)
+  // ==========================
+  static TextStyle h1 = GoogleFonts.merriweather(
+    fontWeight: AppTypography.bold,
+    fontSize: AppTypography.size4xl,
+    height: AppTypography.lh2xl / AppTypography.size4xl,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+
+  static TextStyle h2 = GoogleFonts.merriweather(
+    fontWeight: AppTypography.bold,
+    fontSize: AppTypography.size3xl,
+    height: AppTypography.lhXl / AppTypography.size3xl,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+
+  static TextStyle h3 = GoogleFonts.merriweather(
+    fontWeight: AppTypography.bold,
+    fontSize: AppTypography.size2xl,
+    height: AppTypography.lhLg / AppTypography.size2xl,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+
+  // Legacy alias for backward compatibility with older references
+  static TextStyle heading2 = h2;
+
+  static TextStyle h4 = GoogleFonts.merriweather(
+    fontWeight: AppTypography.bold,
+    fontSize: AppTypography.sizeXl,
+    height: AppTypography.lhMd / AppTypography.sizeXl,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+
+  // ==========================
+  // LABELS (Hybrid)
+  // ==========================
+  static TextStyle labelLg = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeLg,
+    height: AppTypography.lhSm / AppTypography.sizeLg,
+    letterSpacing: AppTypography.lsLg,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle labelLgSemibold = labelLg.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle labelLgBold = labelLg.copyWith(fontWeight: AppTypography.bold);
+  static TextStyle labelLgLink = labelLg.copyWith(decoration: TextDecoration.underline);
+
+  static TextStyle labelMd = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeMd,
+    height: AppTypography.lhSm / AppTypography.sizeMd,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle labelMdSemibold = labelMd.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle labelMdBold = labelMd.copyWith(fontWeight: AppTypography.bold);
+  static TextStyle labelMdLink = labelMd.copyWith(decoration: TextDecoration.underline);
+
+  static TextStyle labelSm = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeSm,
+    height: AppTypography.lh2xs / AppTypography.sizeSm,
+    letterSpacing: AppTypography.lsSm,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle labelSmSemibold = labelSm.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle labelSmBold = labelSm.copyWith(fontWeight: AppTypography.bold);
+  static TextStyle labelSmLink = labelSm.copyWith(decoration: TextDecoration.underline);
+
+  static TextStyle labelXs = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeXs,
+    height: AppTypography.lh2xs / AppTypography.sizeXs,
+    letterSpacing: AppTypography.lsSm,
+    color: AppTypography.textPrimary,
+  );
+  static TextStyle labelXsSemibold = labelXs.copyWith(fontWeight: AppTypography.semibold);
+  static TextStyle labelXsBold = labelXs.copyWith(fontWeight: AppTypography.bold);
+  static TextStyle labelXsLink = labelXs.copyWith(decoration: TextDecoration.underline);
+
+  // ==========================
+  // TITLES (Hybrid)
+  // ==========================
+  static TextStyle titleXl = GoogleFonts.merriweather(
+    fontWeight: AppTypography.bold,
+    fontSize: AppTypography.sizeXl,
+    height: AppTypography.lhSm / AppTypography.sizeXl,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+
+  static TextStyle titleMd = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeMd,
+    height: AppTypography.lhSm / AppTypography.sizeMd,
+    letterSpacing: AppTypography.lsBase,
+    color: AppTypography.textPrimary,
+  );
+
+  static TextStyle titleSm = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.sizeSm,
+    height: AppTypography.lhSm / AppTypography.sizeSm,
+    letterSpacing: AppTypography.lsSm,
+    color: AppTypography.textPrimary,
+  );
+
+  static TextStyle title2Xs = TextStyle(
+    fontFamily: AppTypography.fontOs,
+    fontWeight: AppTypography.semibold,
+    fontSize: AppTypography.size2xs,
+    height: AppTypography.lh2xs / AppTypography.size2xs,
+    letterSpacing: AppTypography.lsSm,
+    color: AppTypography.textPrimary,
+  );
+
+
+
+
+  // ==========================
+  // Original Code --- DO NOT DELETE
+  // ==========================
+}
 
 
 class AppTextStyles {
+ 
   static const _fontFamily = 'Merriweather';
   static const _fontFamilyOpenSans = 'Opensans';
 
@@ -81,6 +315,7 @@ class AppTextStyles {
 }
 
 class AppHeadingTextStyles {
+  // Uses Merriweather-VariableFont_opsz,wdth,wght.ttf as defined in pubspec.yaml
   static const String _fontFamily = 'Merriweather';
 
   // h1-mw-bold

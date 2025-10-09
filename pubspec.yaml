@@ -33,6 +33,7 @@ dependencies:
   dio: ^5.4.0
   flutter:
     sdk: flutter
+  google_fonts: ^6.2.1
   http: ^1.1.0
   logger: ^2.5.0
   get: ^4.7.2
@@ -86,6 +87,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+## Updated by Joy — homescreen update - not final
 
   # To add assets to your application, add an assets section, like this:
   assets:
@@ -93,6 +95,9 @@ flutter:
     - assets/svg/splash/
     - assets/svg/revamp/
     - assets/svg/body_parts_selector/
+    - assets/svg/home/
+    - assets/svg/main_nav_tabs/
+    - assets/svg/MyPrep_Appt_Companion/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -110,9 +115,14 @@ flutter:
     - family: Merriweather
       fonts:
         - asset: assets/fonts/Merriweather-Regular.ttf
-    - family: Opensans
+    - family: Open Sans
       fonts:
         - asset: assets/fonts/OpenSans-VariableFont_wdth,wght.ttf
+          weight: 400
+        - asset: assets/fonts/OpenSans-VariableFont_wdth,wght.ttf
+          weight: 600
+        - asset: assets/fonts/OpenSans-VariableFont_wdth,wght.ttf
+          weight: 700
 
 
         

@@ -73,7 +73,7 @@ class _FeedbackPreferencesScreenState extends State<FeedbackPreferencesScreen> {
                       Text(
                         'If you love a few parts equally, select them all!',
                         style: AppTextStyles.bodyOpenSans.copyWith(
-                          color: AppColors.secondaryTxt,
+                          color: AppColors.textSecondary,
                         ),
                       ),
                       const SizedBox(height: 32),
@@ -132,7 +132,7 @@ class _FeedbackPreferencesScreenState extends State<FeedbackPreferencesScreen> {
                                         child: Text(
                                           _options[index],
                                           style: AppTextStyles.bodyOpenSans.copyWith(
-                                            color: isSelected ? AppColors.primary01 : AppColors.secondaryTxt,
+                                             color: isSelected ? AppColors.primary01 : AppColors.textSecondary,
                                             fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                                           ),
                                         ),

@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
       leading: !showBackButton
           ? const SizedBox()
           : IconButton(
-              icon: const Icon(Icons.arrow_back, color: Color(0xFF2D3142)),
+              icon: Icon(Icons.arrow_back, color: AppColors.textPrimary),
               onPressed: () => Navigator.pop(context),
             ),
       backgroundColor: Colors.transparent,
@@ -154,13 +154,13 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Text(
             widget.isSign ? 'Sign In' : 'Create your account',
-            style: AppHeadingTextStyles.h2.copyWith(color: AppColors.primary01),
+            style: AppTypography.h2,
           ),
           if (widget.isSign) ...[
             SizedBox(height: 8),
             Text(
            'Welcome back',
-            style:AppOSTextStyles.osLg.copyWith(color: AppColors.primary01),
+            style: AppTypography.bodyLg.copyWith(fontWeight: AppTypography.regular),
           ),
           ],
           const SizedBox(height: 8),
@@ -170,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
              Text(
               'Your health details are always protected. Logging in simply unlocks your private account.',
               textAlign: TextAlign.start,
-              style: AppOSTextStyles.osLg.copyWith(color: AppColors.primary01),
+              style: AppTypography.bodyLg.copyWith(fontWeight: AppTypography.regular),
             ),
           ],
         ],
@@ -186,11 +186,11 @@ class _LoginScreenState extends State<LoginScreen> {
           // Email Field
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.surface01,
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: AppColors.overlayLight,
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -213,10 +213,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 _formKey.currentState?.validate();
                 _updateButtonState();
               },
-              decoration: const InputDecoration(
+              style: AppTypography.bodyMd.copyWith(fontWeight: AppTypography.regular),
+              decoration: InputDecoration(
                 hintText: 'Email',
+                hintStyle: AppTypography.bodyMd.copyWith(fontWeight: AppTypography.regular, color: AppColors.textInputPlaceholder),
+                errorStyle: AppTypography.labelXsSemibold.copyWith(color: AppColors.red),
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               ),
             ),
           ),
@@ -226,11 +229,11 @@ class _LoginScreenState extends State<LoginScreen> {
           // Password Field
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.surface01,
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: AppColors.overlayLight,
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -257,14 +260,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 _formKey.currentState?.validate();
                 _updateButtonState();
               },
+              style: AppTypography.bodyMd.copyWith(fontWeight: AppTypography.regular),
               decoration: InputDecoration(
                 hintText: 'Password',
+                hintStyle: AppTypography.bodyMd.copyWith(fontWeight: AppTypography.regular, color: AppColors.textInputPlaceholder),
+                errorStyle: AppTypography.labelXsSemibold.copyWith(color: AppColors.red),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.grey[600],
+                    color: AppColors.gray600,
                   ),
                   onPressed: () {
                     setState(() {
@@ -283,18 +289,16 @@ class _LoginScreenState extends State<LoginScreen> {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFFF1EFF7),
+                color: AppColors.onSurfaceSubtle,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Password must be:',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF2D3142),
+                    style: AppTypography.labelSmSemibold.copyWith(
+                      color: AppColors.textPrimary,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -320,12 +324,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   );
                 },
-                child: const Text(
+                child: Text(
                   'Forgot Password?',
-                  style: TextStyle(
+                  style: AppTypography.labelSmLink.copyWith(
                     color: AppColors.amethystViolet,
-                    decoration: TextDecoration.underline,
-                    fontSize: 14,
                   ),
                 ),
               ),
@@ -350,10 +352,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Expanded(
                   child: RichText(
                     text: TextSpan(
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF2D3142),
-                      ),
+                      style: AppTypography.bodySmSemibold,
                       children: [
                         const TextSpan(text: 'I agree to '),
                         TextSpan(
@@ -362,9 +361,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               PrivacyPolicyBottomSheet.show(context);
                             },
                           text: 'Privacy Policy',
-                          style: const TextStyle(
+                          style: AppTypography.labelSmLink.copyWith(
                             color: AppColors.amethystViolet,
-                            decoration: TextDecoration.underline,
                           ),
                         ),
                         const TextSpan(text: ' and '),
@@ -378,9 +376,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               );
                             },
                           text: 'Terms and Conditions',
-                          style: const TextStyle(
+                          style: AppTypography.labelSmLink.copyWith(
                             color: AppColors.amethystViolet,
-                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ],
@@ -401,12 +398,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   activeColor: AppColors.amethystViolet,
                 ),
-                const Text(
+                Text(
                   'I am 16 years or older',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFF2D3142),
-                  ),
+                  style: AppTypography.bodySmSemibold,
                 ),
               ],
             ),
@@ -443,22 +437,27 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             );
           }
-        } else if (state is LoginError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }
-      },
-      builder: (context, state) {
-        return Container(
-          width: double.infinity,
-          height: 50,
-          child: ElevatedButton(
-            onPressed: _isButtonEnabled
-                ? () {
+          } else if (state is LoginError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  state.message,
+                  style: AppTypography.bodySmSemibold.copyWith(
+              color: AppColors.buttonTextPrimary,
+                  ),
+                ),
+                backgroundColor: AppColors.red,
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return Container(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: _isButtonEnabled
+                  ? () {
                     final loginCubit = context.read<LoginCubit>();
                     loginCubit.setUserDetails(
                       email: _emailController.text,
@@ -482,21 +481,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   }
                 : null,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: _isButtonEnabled ? AppColors.amethystViolet : Colors.grey[300],
+              style: ElevatedButton.styleFrom(
+              backgroundColor: _isButtonEnabled ? AppColors.amethystViolet : AppColors.gray300,
               elevation: 0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ),
             ),
             child: state is LoginLoading
-                ? const CircularProgressIndicator(color: Colors.white)
+                  ? const CircularProgressIndicator(color: AppColors.buttonTextPrimary)
                 : Text(
                     widget.isSign ? 'Sign In' : 'Create An Account',
-                    style: TextStyle(
-                      color: _isButtonEnabled ? Colors.white : Colors.grey[600],
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                    style: AppTypography.labelMdSemibold.copyWith(
+              color: _isButtonEnabled ? AppColors.buttonTextPrimary : AppColors.gray600,
                     ),
                   ),
           ),
@@ -517,18 +514,12 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Text(
             widget.isSign ? "Don't have an account?" : 'Already have an account?',
-            style: const TextStyle(
-              fontSize: 14,
-              color: Color(0xFF2D3142),
-            ),
+            style: AppTypography.bodySmSemibold,
           ),
           Text(
             widget.isSign ? ' Sign Up' : ' Sign In',
-            style: const TextStyle(
-              decoration: TextDecoration.underline,
+            style: AppTypography.labelSmLink.copyWith(
               color: AppColors.amethystViolet,
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
             ),
           ),
         ],
@@ -543,16 +534,15 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Icon(
             isMet ? Icons.check_circle : Icons.circle_outlined,
-            color: isMet ? Colors.green : const Color(0xFF2D3142),
+            color: isMet ? AppColors.insightMintGreen : AppColors.textPrimary,
             size: 16,
           ),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
               rule,
-              style: TextStyle(
-                fontSize: 12,
-                color: isMet ? Colors.green : const Color(0xFF2D3142),
+              style: AppTypography.labelXsSemibold.copyWith(
+                color: isMet ? AppColors.insightMintGreen : AppColors.textPrimary,
               ),
             ),
           ),

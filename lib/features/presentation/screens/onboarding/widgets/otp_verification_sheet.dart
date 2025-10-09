@@ -123,7 +123,7 @@ class _OTPVerificationSheetState extends State<OTPVerificationSheet> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: AppColors.primaryTxt,
+            color: AppColors.textPrimary,
               ),
               textAlign: TextAlign.center,
             ),
@@ -134,7 +134,7 @@ class _OTPVerificationSheetState extends State<OTPVerificationSheet> {
               'We\'ve sent a verification code to\n${widget.email}',
               style: const TextStyle(
                 fontSize: 16,
-                color: AppColors.secondaryTxt,
+            color: AppColors.textSecondary,
               ),
               textAlign: TextAlign.center,
             ),

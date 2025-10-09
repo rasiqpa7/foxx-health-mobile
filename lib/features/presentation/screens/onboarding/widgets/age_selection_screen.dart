@@ -61,7 +61,7 @@ class _AgeSelectionRevampScreenState extends State<AgeSelectionRevampScreen> {
               const SizedBox(height: 8),
               Text(
                 'Age can impact how symptoms show up and change over time—knowing yours helps us get it right.',
-                style: AppOSTextStyles.osMd.copyWith(color: AppColors.primaryTxt),
+            style: AppOSTextStyles.osMd.copyWith(color: AppColors.textPrimary),
               ),
               const SizedBox(height: 24),
               Container(
