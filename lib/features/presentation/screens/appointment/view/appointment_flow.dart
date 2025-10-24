@@ -14,7 +14,6 @@ import 'package:foxxhealth/features/presentation/screens/appointment/widgets/mai
 import 'package:foxxhealth/features/presentation/screens/appointment/widgets/symptom_selection_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/appointment/widgets/life_situation_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/appointment/widgets/journey_screen.dart';
-import 'package:foxxhealth/features/presentation/screens/appointment/widgets/premium_info_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/appointment/widgets/concern_prioritization_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/appointment/widgets/symptom_changes_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/appointment/widgets/communication_preferences_screen.dart';
@@ -160,7 +159,7 @@ class _AppointmentFlowState extends State<AppointmentFlow> {
   }
 
   void _nextPage() {
-    if (_currentPage < 13) { // 15 screens total (0-14)
+    if (_currentPage < 12) { // 15 screens total (0-14)
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -431,9 +430,7 @@ class _AppointmentFlowState extends State<AppointmentFlow> {
         question: _getQuestionByType('JOURNEY_WITH_THIS_CONCERN'),
         onDataUpdate: (steps, info, canProceed) => _updateAppointmentData(steps: steps, info: info, canProceed: canProceed),
       ),
-      PremiumInfoScreen(
-        onDataUpdate: (info) => _updateAppointmentData(info: info, canProceed: true),
-      ),
+    
       ConcernPrioritizationScreen(
         onDataUpdate: (priorities, info, canProceed) => _updateAppointmentData(priorities: priorities, info: info, canProceed: canProceed),
       ),
@@ -456,8 +453,7 @@ class _AppointmentFlowState extends State<AppointmentFlow> {
   }
 
   double get _progressValue {
-
-    return (_currentPage + 1) / 15.0;
+    return ( _currentPage + 1 ) / screens.length.toDouble();
   }
 
   @override
@@ -546,4 +542,4 @@ class _AppointmentFlowState extends State<AppointmentFlow> {
       ),
     );
   }
-} 
+}

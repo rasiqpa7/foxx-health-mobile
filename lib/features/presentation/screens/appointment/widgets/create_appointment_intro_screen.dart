@@ -1,172 +1,231 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:foxxhealth/features/presentation/widgets/navigation_buttons.dart';
+import 'package:foxxhealth/features/presentation/screens/background/foxxbackground.dart';
 import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
 import 'package:foxxhealth/features/presentation/theme/app_text_styles.dart';
+import 'package:foxxhealth/features/presentation/theme/app_spacing.dart';
+import 'package:foxxhealth/features/presentation/widgets/foxx_buttons.dart';
+import 'package:foxxhealth/features/presentation/screens/appointment/view/appointment_flow.dart';
+import 'package:foxxhealth/features/presentation/screens/main_navigation/main_navigation_screen.dart';
 
 class CreateAppointmentIntroScreen extends StatelessWidget {
-  final VoidCallback onNext;
-
-  const CreateAppointmentIntroScreen({
-    Key? key,
-    required this.onNext,
-  }) : super(key: key);
+  final String? origin; // 'home' or 'myprep'
+  const CreateAppointmentIntroScreen({super.key, this.origin});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Column(
-        children: [
-          // Central Icon
-          Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              color: AppColors.mauve50,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.assignment_outlined,
-              size: 60,
-              color: AppColors.amethyst,
-            ),
-          ),
-          const SizedBox(height: 32),
-          
-          // Title
-          Text(
-            'Let\'s plan your visit together',
-            style: AppHeadingTextStyles.h2.copyWith(
-              color: AppColors.primary01,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(height: 24),
-          
-          // Introductory Text
-          Text(
-            'The questions you\'re about to answer are often overlooked, yet they can reveal patterns and insights that help you understand your body in a new way.',
-            style: AppOSTextStyles.osMd.copyWith(
-              color: AppColors.primary01,
-              height: 1.5,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(height: 24),
-          
-          // Bulleted List Introduction
-          Text(
-            'By sharing them, you give your Appointment Companion the insight to:',
-            style: AppOSTextStyles.osMd.copyWith(
-              color: AppColors.primary01,
-              height: 1.5,
-            ),
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(height: 16),
-          
-          // Bullet Points
-          _buildBulletPoint('See the full picture of your health'),
-          const SizedBox(height: 8),
-          _buildBulletPoint('Guide you to the questions that really count'),
-          const SizedBox(height: 8),
-          _buildBulletPoint('Keep the focus exactly where it belongs, on you'),
-          const SizedBox(height: 24),
-          
-          // Bottom Privacy Section
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.9),
-              borderRadius:  BorderRadius.circular(20),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Privacy Icons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.favorite,
-                        color: AppColors.davysGray,
-                        size: 24,
-                      ),
-                      const SizedBox(width: 16),
-                      Icon(
-                        Icons.lock,
-                        color: AppColors.davysGray,
-                        size: 24,
-                      ),
-                    ],
+    return Foxxbackground(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: FoxxBackButton(
+            onPressed: () {
+              // Prefer popping to preserve MainNavigation scaffolding
+              if (Navigator.of(context).canPop()) {
+                Navigator.of(context).pop();
+              } else {
+                // Fallback: restore main nav if there's nothing to pop
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => MainNavigationScreen(),
                   ),
-                  const SizedBox(height: 12),
-                  
-                  // Privacy Text
-                  Text(
-                    'Everything you tell us stays private and',
-                    style: AppOSTextStyles.osMd.copyWith(
-                      color: AppColors.davysGray,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20),
-                  
-                  // Next Button
-                  SizedBox(
-                    width: double.infinity,
-                    height: 56,
-                    child: ElevatedButton(
-                      onPressed: onNext,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.amethyst,
-                        foregroundColor: Colors.white,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
-                      child: Text(
-                        'Next',
-                        style: AppOSTextStyles.osMdSemiboldLink.copyWith(
-                          color: Colors.white,
-                        ),
+                );
+              }
+            },
+          ),
+        ),
+        body: SafeArea(top: false,
+          child: Center(
+            child: SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Top icon above all copy
+                    Center(
+                      child: SvgPicture.asset(
+                        'assets/svg/MyPrep_Appt_Companion/my-prep-100x100.svg',
+                        width: 100,
+                        height: 100,
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 12),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.only(top: 0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Let’s plan your visit together',
+                            style: AppTypography.h2,
+                            textAlign: TextAlign.center,
+
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    SizedBox(
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text:
+                                  'These questions may take time, but they can reveal patterns and insights others often miss.',
+                              style: AppTypography.bodyMd.copyWith(fontWeight: FontWeight.w400),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(width: double.infinity, height: AppSpacing.paragraphSpacing),
+                            ),
+                            TextSpan(
+                              text:
+                                  'Your Appointment Companion uses your answers to:',
+                              style: AppTypography.bodyMd.copyWith(fontWeight: FontWeight.w400),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(width: double.infinity, height: AppSpacing.paragraphSpacing),
+                            ),
+                            WidgetSpan(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(width: 8),
+                                      Text('• ', style: AppTypography.bulletBodyMd),
+                                      Expanded(
+                                        child: Text(
+                                          'See the full picture of your health',
+                                          style: AppTypography.bulletBodyMd,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(width: 8),
+                                      Text('• ', style: AppTypography.bulletBodyMd),
+                                      Expanded(
+                                        child: Text(
+                                          'Guide you toward the questions that really count',
+                                          style: AppTypography.bulletBodyMd,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(width: 8),
+                                      Text('• ', style: AppTypography.bulletBodyMd),
+                                      Expanded(
+                                        child: Text(
+                                          'Keep the focus on you',
+                                          style: AppTypography.bulletBodyMd,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: double.infinity,
+                                height: AppSpacing.paragraphSpacing,
+                              ),
+                            ),
+                            TextSpan(
+                              text:
+                                  'Take your time. Pause if you need. What you share can shape the care you receive.',
+                              style: AppTypography.bodyMd.copyWith(fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.only(
+                        top: 12,
+                        left: 20,
+                        right: 20,
+                        bottom: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.foxxWhite.withOpacity(0.45),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 28,
+                            height: 28,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: const BoxDecoration(),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                'assets/svg/MyPrep_Appt_Companion/security-icon.svg',
+                                width: 24,
+                                height: 24,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          SizedBox(
+                            width: 320,
+                            child: Text(
+                              'Everything you tell us stays private and protected, always.',
+                              textAlign: TextAlign.center,
+                              style: AppTypography.bodySm,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBulletPoint(String text) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: 6,
-          height: 6,
-          margin: const EdgeInsets.only(top: 8, right: 12),
-          decoration: BoxDecoration(
-            color: AppColors.primary01,
-            shape: BoxShape.circle,
-          ),
         ),
-        Expanded(
-          child: Text(
-            text,
-            style: AppOSTextStyles.osMd.copyWith(
-              color: AppColors.primary01,
-              height: 1.5,
+        bottomNavigationBar: SafeArea(
+          top: false,
+          child: Padding(
+            padding: AppSpacing.bottomBarPadding,
+            child: SizedBox(
+              width: double.infinity,
+              child: PrimaryButton(
+                label: 'Next',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => AppointmentFlow(),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }
