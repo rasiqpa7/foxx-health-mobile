@@ -5,6 +5,7 @@ import 'package:foxxhealth/features/presentation/screens/premiumScreen/premium_o
 import 'package:foxxhealth/features/presentation/theme/app_colors.dart';
 import 'package:foxxhealth/features/presentation/theme/app_text_styles.dart';
 import 'package:foxxhealth/features/presentation/screens/loginScreen/login_screen.dart';
+import 'package:foxxhealth/features/presentation/screens/splash/splash_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/profile/update_password_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/profile/privacy_policy_screen.dart';
 import 'package:foxxhealth/features/presentation/screens/profile/terms_of_use_screen.dart';
@@ -83,10 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         // Navigate to login screen and clear all previous routes
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => LoginScreen(
-              showBackButton: false,
-              isSign: true,
-            ),
+            builder: (context) => const SplashScreen(),
           ),
           (route) => false,
         );
