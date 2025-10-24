@@ -203,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter an email address';
                 }
-                final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                final emailRegex = RegExp(r'^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$');
                 if (!emailRegex.hasMatch(value)) {
                   return 'Please enter a valid email address';
                 }
@@ -336,7 +336,7 @@ class _LoginScreenState extends State<LoginScreen> {
           
           // Checkboxes (only for sign up)
           if (!widget.isSign) ...[
-            const SizedBox(height: 24),
+            const SizedBox(height: 12),
             Row(
               children: [
                 Checkbox(
